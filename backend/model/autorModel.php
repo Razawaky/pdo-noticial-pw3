@@ -2,10 +2,6 @@
 
 include ('../connection/conn.php');
 
-// date_default_timezone_set('America/Sao_Paulo');
-// $dataAtual = date('Y-m-d H:i:s', time()); //setei o horario e dia padrão, ent estrá já automatico a data
-
-
 //request mesma função do post e get, mas ele ouve os dois
 if($_REQUEST['operacao'] == 'create'){
 
