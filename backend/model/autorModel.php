@@ -6,7 +6,7 @@ include ('../connection/conn.php');
 // $dataAtual = date('Y-m-d H:i:s', time()); //setei o horario e dia padrão, ent estrá já automatico a data
 
 
-//request mesma função do REQUEST e get, mas ele ouve os dois
+//request mesma função do post e get, mas ele ouve os dois
 if($_REQUEST['operacao'] == 'create'){
 
     if(empty($_REQUEST['nome']) || 

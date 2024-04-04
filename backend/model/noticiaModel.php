@@ -6,11 +6,11 @@ date_default_timezone_set('America/Sao_Paulo');
 $dataAtual = date('Y-m-d H:i:s', time()); 
 
 
-if($_POST['operacao'] == 'create'){
+if($_REQUEST['operacao'] == 'create'){
 
-    if(empty($_POST['titulo']) || 
-       empty($_POST['resumo']) || 
-       empty($_POST['corpo'])){
+    if(empty($_REQUEST['titulo']) || 
+       empty($_REQUEST['resumo']) || 
+       empty($_REQUEST['corpo'])){
 
         $dados = [
             'type' => 'error',
@@ -22,9 +22,9 @@ if($_POST['operacao'] == 'create'){
             $sql = "INSERT INTO NOTICIA (TITULO, RESUMO, CORPO, DATA) VALUES (?,?,?,?)";
             $stmt /*statement*/ = $pdo->prepare($sql); 
             $stmt -> execute([ 
-                $_POST['titulo'],
-                $_POST['resumo'],
-                $_POST['corpo'],
+                $_REQUEST['titulo'],
+                $_REQUEST['resumo'],
+                $_REQUEST['corpo'],
                 $dataAtual
             ]);
             $dados = [
@@ -41,7 +41,7 @@ if($_POST['operacao'] == 'create'){
     }
 }
 
-if($_POST['operacao'] == 'read'){
+if($_REQUEST['operacao'] == 'read'){
     try{
 
         $sql = "SELECT * FROM NOTICIA";
@@ -58,12 +58,12 @@ if($_POST['operacao'] == 'read'){
     }
 }
 
-if($_POST['operacao'] == 'update'){
+if($_REQUEST['operacao'] == 'update'){
 
-    if(empty($_POST['titulo']) || 
-       empty($_POST['resumo']) || 
-       empty($_POST['corpo'])  ||
-       empty($_POST['id'])){
+    if(empty($_REQUEST['titulo']) || 
+       empty($_REQUEST['resumo']) || 
+       empty($_REQUEST['corpo'])  ||
+       empty($_REQUEST['id'])){
 
         $dados = [
             'type' => 'error',
@@ -75,11 +75,11 @@ if($_POST['operacao'] == 'update'){
             $sql = "UPDATE NOTICIA SET TITULO = ?, RESUMO = ?, CORPO = ?, DATA = ? WHERE ID = ?";
             $stmt /*statement*/ = $pdo->prepare($sql); //prepare testa o sql conferindo se não há nenhum codigo malicioso
             $stmt -> execute([ //executa sql
-                $_POST['titulo'],
-                $_POST['resumo'],
-                $_POST['corpo'],
+                $_REQUEST['titulo'],
+                $_REQUEST['resumo'],
+                $_REQUEST['corpo'],
                 $dataAtual,
-                $_POST['id']
+                $_REQUEST['id']
             ]);
             $dados = [
                 'type' => 'success',
