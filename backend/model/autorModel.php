@@ -3,11 +3,11 @@
 include ('../connection/conn.php');
 
 //request mesma função do post e get, mas ele ouve os dois
-if($_REQUEST['operacao'] == 'create'){
+if($_POST['operacao'] == 'create'){
 
-    if(empty($_REQUEST['nome']) || 
-       empty($_REQUEST['login']) || 
-       empty($_REQUEST['senha'])){
+    if(empty($_POST['nome']) || 
+       empty($_POST['login']) || 
+       empty($_POST['senha'])){
 
         $dados = [
             'type' => 'error',
@@ -19,9 +19,9 @@ if($_REQUEST['operacao'] == 'create'){
             $sql = "INSERT INTO AUTOR (NOME, LOGIN, SENHA) VALUES (?,?,?)";
             $stmt /*statement*/ = $pdo->prepare($sql); //prepare testa o sql conferindo se não há nenhum codigo malicioso
             $stmt -> execute([ //executa sql
-                $_REQUEST['nome'],
-                $_REQUEST['login'],
-                $_REQUEST['senha']
+                $_POST['nome'],
+                $_POST['login'],
+                $_POST['senha']
             ]);
             $dados = [
                 'type' => 'success',
@@ -37,7 +37,7 @@ if($_REQUEST['operacao'] == 'create'){
     }
 }
 
-if($_REQUEST['operacao'] == 'read'){
+if($_POST['operacao'] == 'read'){
     try{
 
         $sql = "SELECT * FROM AUTOR";
@@ -54,12 +54,12 @@ if($_REQUEST['operacao'] == 'read'){
     }
 }
 
-if($_REQUEST['operacao'] == 'update'){
+if($_POST['operacao'] == 'update'){
 
-    if(empty($_REQUEST['nome']) || 
-       empty($_REQUEST['login']) || 
-       empty($_REQUEST['senha'])  ||
-       empty($_REQUEST['id'])){
+    if(empty($_POST['nome']) || 
+       empty($_POST['login']) || 
+       empty($_POST['senha'])  ||
+       empty($_POST['id'])){
 
         $dados = [
             'type' => 'error',
@@ -71,10 +71,10 @@ if($_REQUEST['operacao'] == 'update'){
             $sql = "UPDATE AUTOR SET NOME = ?, LOGIN = ?, SENHA = ? WHERE ID = ?";
             $stmt /*statement*/ = $pdo->prepare($sql); //prepare testa o sql conferindo se não há nenhum codigo malicioso
             $stmt -> execute([ //executa sql
-                $_REQUEST['nome'],
-                $_REQUEST['login'],
-                $_REQUEST['senha'],
-                $_REQUEST['id']
+                $_POST['nome'],
+                $_POST['login'],
+                $_POST['senha'],
+                $_POST['id']
             ]);
             $dados = [
                 'type' => 'success',
@@ -90,9 +90,9 @@ if($_REQUEST['operacao'] == 'update'){
     }
 }
 
-if($_REQUEST['operacao'] == 'delete'){
+if($_POST['operacao'] == 'delete'){
 
-    if(empty($_REQUEST['id'])){
+    if(empty($_POST['id'])){
 
         $dados = [
             'type' => 'error',
@@ -104,7 +104,7 @@ if($_REQUEST['operacao'] == 'delete'){
             $sql = "DELETE FROM AUTOR WHERE ID = ?";
             $stmt /*statement*/ = $pdo->prepare($sql); //prepare testa o sql conferindo se não há nenhum codigo malicioso
             $stmt -> execute([ //executa sql
-                $_REQUEST['id']
+                $_POST['id']
             ]);
             $dados = [
                 'type' => 'success',

@@ -6,11 +6,11 @@ date_default_timezone_set('America/Sao_Paulo');
 $dataAtual = date('Y-m-d H:i:s', time()); 
 
 
-if($_REQUEST['operacao'] == 'create'){
+if($_POST['operacao'] == 'create'){
 
-    if(empty($_REQUEST['titulo']) || 
-       empty($_REQUEST['resumo']) || 
-       empty($_REQUEST['corpo'])){
+    if(empty($_POST['titulo']) || 
+       empty($_POST['resumo']) || 
+       empty($_POST['corpo'])){
 
         $dados = [
             'type' => 'error',
@@ -22,9 +22,9 @@ if($_REQUEST['operacao'] == 'create'){
             $sql = "INSERT INTO NOTICIA (TITULO, RESUMO, CORPO, DATA) VALUES (?,?,?,?)";
             $stmt /*statement*/ = $pdo->prepare($sql); 
             $stmt -> execute([ 
-                $_REQUEST['titulo'],
-                $_REQUEST['resumo'],
-                $_REQUEST['corpo'],
+                $_POST['titulo'],
+                $_POST['resumo'],
+                $_POST['corpo'],
                 $dataAtual
             ]);
             $dados = [
@@ -41,7 +41,7 @@ if($_REQUEST['operacao'] == 'create'){
     }
 }
 
-if($_REQUEST['operacao'] == 'read'){
+if($_POST['operacao'] == 'read'){
     try{
 
         $sql = "SELECT * FROM NOTICIA";
@@ -58,12 +58,12 @@ if($_REQUEST['operacao'] == 'read'){
     }
 }
 
-if($_REQUEST['operacao'] == 'update'){
+if($_POST['operacao'] == 'update'){
 
-    if(empty($_REQUEST['titulo']) || 
-       empty($_REQUEST['resumo']) || 
-       empty($_REQUEST['corpo'])  ||
-       empty($_REQUEST['id'])){
+    if(empty($_POST['titulo']) || 
+       empty($_POST['resumo']) || 
+       empty($_POST['corpo'])  ||
+       empty($_POST['id'])){
 
         $dados = [
             'type' => 'error',
@@ -75,11 +75,11 @@ if($_REQUEST['operacao'] == 'update'){
             $sql = "UPDATE NOTICIA SET TITULO = ?, RESUMO = ?, CORPO = ?, DATA = ? WHERE ID = ?";
             $stmt /*statement*/ = $pdo->prepare($sql); //prepare testa o sql conferindo se não há nenhum codigo malicioso
             $stmt -> execute([ //executa sql
-                $_REQUEST['titulo'],
-                $_REQUEST['resumo'],
-                $_REQUEST['corpo'],
+                $_POST['titulo'],
+                $_POST['resumo'],
+                $_POST['corpo'],
                 $dataAtual,
-                $_REQUEST['id']
+                $_POST['id']
             ]);
             $dados = [
                 'type' => 'success',
@@ -95,9 +95,9 @@ if($_REQUEST['operacao'] == 'update'){
     }
 }
 
-if($_REQUEST['operacao'] == 'delete'){
+if($_POST['operacao'] == 'delete'){
 
-    if(empty($_REQUEST['id'])){
+    if(empty($_POST['id'])){
 
         $dados = [
             'type' => 'error',
@@ -107,7 +107,7 @@ if($_REQUEST['operacao'] == 'delete'){
         try{
             $sql = "DELETE FROM NOTICIA WHERE ID = ?";
             $stmt /*statement*/ = $pdo->prepare($sql); //prepare testa o sql conferindo se não há nenhum codigo malicioso
-            $stmt -> execute( $_REQUEST['id']);
+            $stmt -> execute( $_POST['id']);
             $dados = [
                 'type' => 'success',
                 'message' => 'Registro deletado com sucesso'
