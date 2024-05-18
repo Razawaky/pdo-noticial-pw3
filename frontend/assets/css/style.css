@@ -1,0 +1,163 @@
+* {
+    padding: 0 0;
+    margin: 0 0;
+    box-sizing: border-box;
+    font-family: 'Gotham', sans-serif;
+    scroll-behavior: smooth;
+}
+
+/* ___________ BARRA DE NAVEGAÇÃO ______________*/
+
+#navbar {
+    background-color: #000000;
+    padding: 10px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    transition: background-color 0.6s ease-in-out;
+    background-color: transparent;
+}
+
+#navbar ul {
+    list-style-type: none;
+    padding: 20px 0;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+}
+
+#navbar ul li {
+    margin: 0 10px;
+}
+
+#navbar ul li a {
+    text-decoration: none;
+    color: rgb(255, 255, 255);
+}
+
+#navbar ul li a.active {
+    color: rgb(0, 102, 255); /* Altere para a cor desejada */
+}
+
+.search-container {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 15px; 
+}
+
+.navbar-search {
+    width: 300px; 
+    height: 30px; 
+    padding: 5px; 
+    border: 1px solid #ddd; 
+    border-radius: 5px; 
+    outline: none; 
+}
+
+/* ___________ BARRA DE NAVEGAÇÃO ______________*/
+.banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    height: 100vh;
+    background-image: url('/frontend/assets/img/bannerPrincipal.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+
+span {
+    color: rgb(255, 255, 255);
+}
+
+h1 {
+    font-size: 100px;
+}
+
+.content-section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+    padding: 20px;
+}
+
+.content-section img {
+    width: 400px; /* Ajuste conforme necessário */
+    height: auto;
+}
+
+.text-content {
+    margin-left: 20px; /* Espaçamento entre a imagem e o texto */
+}
+
+.content-section.reverse {
+    flex-direction: row-reverse; /* Inverte a ordem dos elementos */
+}
+
+.content-section.reverse.text-content {
+    margin-left: 0;
+    margin-right: 20px; /* Espaçamento entre a imagem e o texto */
+}
+/* ___________ TEXTO NA IMAGEM ______________*/
+
+/* Container do footer */
+.container {
+    max-width: auto ;
+    margin: auto;
+    padding: 25px;
+    background-color: #000000;;
+}
+
+/* Layout das colunas */
+.row::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.col {
+    float: left;
+    width: 50%;
+}
+
+.info {
+    margin-right: 50px; 
+}
+
+/* Estilo do texto */
+.info h5,.contact h5 {
+    color: #ffffff;
+}
+
+.info p,.contact p {
+    color: #ffffff;
+}
+
+/* Centralização do campo de pesquisa */
+.search {
+    display: block;
+    margin: 20px auto;
+}
+
+/* Campo de pesquisa */
+.form-control {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+
+/* Responsividade */
+@media screen and (max-width: 768px) {
+   .col {
+        width: 100%;
+    }
+}
