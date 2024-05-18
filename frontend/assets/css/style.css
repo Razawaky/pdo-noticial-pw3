@@ -40,7 +40,7 @@
 }
 
 #navbar ul li a.active {
-    color: rgb(0, 102, 255); /* Altere para a cor desejada */
+    color: rgb(0, 102, 255); /*cor link ativo*/
 }
 
 .search-container {
@@ -56,6 +56,47 @@
     border: 1px solid #ddd; 
     border-radius: 5px; 
     outline: none; 
+}
+
+.menu-btn {
+    display: none; 
+    cursor: pointer;
+}
+
+.menu {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    overflow: hidden; 
+}
+
+.menu li {
+    float: left;
+}
+
+@media (max-width: 600px) {
+   .menu-btn {
+        display: block; 
+    }
+
+   .menu {
+        display: none; 
+    }
+
+   .menu.show {
+        display: block; 
+    }
+}
+
+.menu-btn {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #333;
+}
+
+.menu-btn.open {
+    transform: rotate(90deg); 
 }
 
 /* ___________ BARRA DE NAVEGAÇÃO ______________*/
@@ -89,13 +130,13 @@ h1 {
     padding: 20px;
 }
 
-.content-section img {
-    width: 400px; /* Ajuste conforme necessário */
+.content-section img { /*section de imgs */
+    width: 400px; 
     height: auto;
 }
 
 .text-content {
-    margin-left: 20px; /* Espaçamento entre a imagem e o texto */
+    margin-left: 20px; 
 }
 
 .content-section.reverse {
@@ -104,7 +145,7 @@ h1 {
 
 .content-section.reverse.text-content {
     margin-left: 0;
-    margin-right: 20px; /* Espaçamento entre a imagem e o texto */
+    margin-right: 20px; 
 }
 /* ___________ TEXTO NA IMAGEM ______________*/
 
