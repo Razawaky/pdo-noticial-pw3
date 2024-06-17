@@ -40,3 +40,4 @@ $('.menu-btn').click(function() {
     $(this).toggleClass('open'); /* ABRE O ICONE */
     $('.menu').slideToggle(); /* MOSTRA OU OCULTA MENU */
 });
+

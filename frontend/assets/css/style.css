@@ -7,10 +7,9 @@
 }
 
 /* ___________ BARRA DE NAVEGAÇÃO ______________*/
-
 #navbar {
     background-color: #000000;
-    padding: 10px 0px;
+    padding: 10px 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -98,8 +97,8 @@
 .menu-btn.open {
     transform: rotate(90deg); 
 }
-
 /* ___________ BARRA DE NAVEGAÇÃO ______________*/
+
 .banner {
     display: flex;
     justify-content: center;
@@ -112,7 +111,6 @@
     background-repeat: no-repeat;
     background-attachment: fixed;
 }
-
 
 span {
     color: rgb(255, 255, 255);
@@ -202,3 +200,7 @@ h1 {
         width: 100%;
     }
 }
+/* Container do footer */
+
+/*Dashboard CSS*/
+
