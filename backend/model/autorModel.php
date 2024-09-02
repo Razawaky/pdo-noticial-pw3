@@ -2,6 +2,10 @@
 
 include ('../connection/conn.php');
 
+// date_default_timezone_set('America/Sao_Paulo');
+// $dataAtual = date('Y-m-d H:i:s', time()); //setei o horario e dia padrão, ent estrá já automatico a data
+
+
 //request mesma função do post e get, mas ele ouve os dois
 if($_POST['operacao'] == 'create'){
 
@@ -120,6 +124,22 @@ if($_POST['operacao'] == 'delete'){
     }
 } 
 
+if($_POST['operacao'] == 'view'){
+    try{
+
+        $sql = "SELECT * FROM AUTOR WHERE ID = " .$_POST['ID']."";
+        $resultado = $pdo->query($sql); 
+        while($row = $resultado->fetch(PDO::FETCH_ASSOC)){ 
+            $dados[] = array_map(null, $row); 
+        }
+
+    }catch(PDOException $e){
+        $dados = [
+            'type' => 'error',
+            'message' => 'Erro de consulta: ' . $e -> getMessage()
+        ];
+    }
+}
 
 echo json_encode($dados);
 
